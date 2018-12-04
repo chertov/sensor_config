@@ -1,0 +1,19 @@
+{
+    "compilerOptions": {
+        "alwaysStrict": true,
+        "inlineSourceMap": true,
+        "inlineSources": true,
+        "outDir": "./pub/js/",
+        "target": "es5",
+        "lib": ["es2017", "dom", "webworker"],
+        "experimentalDecorators": true,
+        "jsx": "react",
+        "allowJs": true
+    },
+    "include": [
+        "./tsx/"
+    ],
+    "exclude": [
+        "node_modules"
+    ]
+}
