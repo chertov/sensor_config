@@ -18,37 +18,35 @@ export const WbAttrDefault = () : IWbAttr => ({
     stAuto: AwbAttrDefault()
 })
 
-export interface IWbAttrProps {
+interface IWbAttrProps {
     value: IWbAttr
     onChange(value: IWbAttr): void
 }
-export class WbAttr extends React.Component<IWbAttrProps> {
-    send = (new_field) => {
-        let new_props = Object.assign(this.props.value, new_field)
-        this.props.onChange(new_props)
+export const WbAttr: React.SFC<IWbAttrProps> = (props) => {
+    const send = (new_field) => {
+        let value = Object.assign(props.value, new_field)
+        props.onChange(value)
     }
-    render() {
-        return (
+    return (
+        <div>
+            Defines the manual AWB attributes of the ISP.
             <div>
-                Defines the manual AWB attributes of the ISP.
-                <div>
-                    bByPass <Checkbox checked={this.props.value.bByPass} onChange={e => this.send({bByPass: e.target.checked})} />
-                </div>
-                <div>
-                    enOpType
-                    Automatic/Manual WB switch.
-                    Defines the running status of the ISP module.
-                    <OpTypeEditor value={this.props.value.enOpType} onChange={enOpType => this.send({enOpType})} />
-                </div>
-                <div>
-                    Manual AWB parameter
-                    <MwbAttr value={this.props.value.stManual} onChange={(stManual) => this.send({stManual})} />
-                </div>
-                <div>
-                    AWB parameter
-                    <AwbAttr value={this.props.value.stAuto} onChange={(stAuto) => this.send({stAuto})} />
-                </div>
+                bByPass <Checkbox checked={props.value.bByPass} onChange={e => send({bByPass: e.target.checked})} />
             </div>
-        );
-    }
+            <div>
+                enOpType
+                Automatic/Manual WB switch.
+                Defines the running status of the ISP module.
+                <OpTypeEditor value={props.value.enOpType} onChange={enOpType => send({enOpType})} />
+            </div>
+            <div>
+                Manual AWB parameter
+                <MwbAttr value={props.value.stManual} onChange={(stManual) => send({stManual})} />
+            </div>
+            <div>
+                AWB parameter
+                <AwbAttr value={props.value.stAuto} onChange={(stAuto) => send({stAuto})} />
+            </div>
+        </div>
+    )
 }

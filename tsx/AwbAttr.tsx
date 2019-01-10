@@ -54,7 +54,7 @@ export interface IAwbAttrProps {
     value: IAwbAttr
     onChange(value: IAwbAttr): void
 }
-export class AwbAttr extends React.Component<IAwbAttrProps> {
+export class AwbAttr extends React.PureComponent<IAwbAttrProps> {
     send = (new_field) => {
         let new_props = Object.assign(this.props.value, new_field)
         this.props.onChange(new_props)

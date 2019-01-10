@@ -7,16 +7,15 @@ interface ISliderValueSizedProps {
     value: number
     onChange(value: number): void
 }
-class SliderValue extends React.Component<ISliderValueSizedProps> {
-    render() {
-        return (
-            <div>
-                <InputNumber min={this.props.min} max={this.props.max} value={this.props.value} onChange={this.props.onChange} />
-                <Slider min={this.props.min} max={this.props.max} value={this.props.value} onChange={this.props.onChange} />
-            </div>
-        )
-    }
+const SliderValue: React.SFC<ISliderValueSizedProps> = (props) => {
+    return (
+        <div>
+            <InputNumber min={props.min} max={props.max} value={props.value} onChange={props.onChange} />
+            <Slider min={props.min} max={props.max} value={props.value} onChange={props.onChange} />
+        </div>
+    )
 }
+
 
 interface ISliderValueProps {
     value: number
@@ -27,30 +26,14 @@ export const umax = (pow: number): number => Math.pow(2, pow)-1
 export const smin = (pow: number): number => -(Math.pow(2, pow)/2)
 export const smax = (pow: number): number => Math.pow(2, pow)/2-1
 
-export class SliderValueU8 extends React.Component<ISliderValueProps> {
-    render() { return (<SliderValue min={0} max={umax(8)} {...this.props} />) }
-}
-export class SliderValueS8 extends React.Component<ISliderValueProps> {
-    render() { return (<SliderValue min={smin(8)} max={smax(8)} {...this.props} />) }
-}
+export const SliderValueU8: React.SFC<ISliderValueProps> = (props) => <SliderValue min={0} max={umax(8)} {...props} />
+export const SliderValueS8: React.SFC<ISliderValueProps> = (props) => <SliderValue min={smin(8)} max={smax(8)} {...props} />
 
-export class SliderValueU16 extends React.Component<ISliderValueProps> {
-    render() { return (<SliderValue min={0} max={umax(16)} {...this.props} />) }
-}
-export class SliderValueS16 extends React.Component<ISliderValueProps> {
-    render() { return (<SliderValue min={smin(16)} max={smax(16)} {...this.props} />) }
-}
+export const SliderValueU16: React.SFC<ISliderValueProps> = (props) => <SliderValue min={0} max={umax(16)} {...props} />
+export const SliderValueS16: React.SFC<ISliderValueProps> = (props) => <SliderValue min={smin(16)} max={smax(16)} {...props} />
 
-export class SliderValueU32 extends React.Component<ISliderValueProps> {
-    render() { return (<SliderValue min={0} max={umax(32)} {...this.props} />) }
-}
-export class SliderValueS32 extends React.Component<ISliderValueProps> {
-    render() { return (<SliderValue min={smin(32)} max={smax(32)} {...this.props} />) }
-}
+export const SliderValueU32: React.SFC<ISliderValueProps> = (props) => <SliderValue min={0} max={umax(32)} {...props} />
+export const SliderValueS32: React.SFC<ISliderValueProps> = (props) => <SliderValue min={smin(32)} max={smax(32)} {...props} />
 
-export class SliderValueU64 extends React.Component<ISliderValueProps> {
-    render() { return (<SliderValue min={0} max={umax(64)} {...this.props} />) }
-}
-export class SliderValueS64 extends React.Component<ISliderValueProps> {
-    render() { return (<SliderValue min={smin(64)} max={smax(64)} {...this.props} />) }
-}
+export const SliderValueU64: React.SFC<ISliderValueProps> = (props) => <SliderValue min={0} max={umax(64)} {...props} />
+export const SliderValueS64: React.SFC<ISliderValueProps> = (props) => <SliderValue min={smin(64)} max={smax(64)} {...props} />

@@ -46,8 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
     class App extends React.Component<{}, IAppState> {
         state = {
             wbAttr: WbAttrDefault()
-        };
-
+        }
         render() {
             return (
                 <Layout>

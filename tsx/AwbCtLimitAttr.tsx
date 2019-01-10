@@ -20,44 +20,41 @@ export const AwbCtLimitAttrDefault = () : IAwbCtLimitAttr => ({
     u16LowBgLimit: 0
 })
 
-
-export interface IAwbAttrProps {
+interface IAwbAttrProps {
     value: IAwbCtLimitAttr
     onChange(value: IAwbCtLimitAttr): void
 }
-export class AwbCtLimitAttr extends React.Component<IAwbAttrProps> {
-    send = (new_field) => {
-        let new_props = Object.assign(this.props.value, new_field)
-        this.props.onChange(new_props)
+export const AwbCtLimitAttr: React.SFC<IAwbAttrProps> = (props) => {
+    const send = (new_field) => {
+        let value = Object.assign(props.value, new_field)
+        props.onChange(value)
     }
-    render() {
-        return (
+    return (
+        <div>
             <div>
-                <div>
-                    bEnable
-                    <Checkbox checked={this.props.value.bEnable} onChange={e => this.send({bEnable: e.target.checked})} />
-                </div>
-                <div>
-                    enOpType
-                    <OpTypeEditor value={this.props.value.enOpType} onChange={enOpType => this.send({enOpType})} />
-                </div>
-                <div>
-                    u16HighRgLimit
-                    <SliderValueU16 value={this.props.value.u16HighRgLimit} onChange={u16HighRgLimit => this.send({u16HighRgLimit})} />
-                </div>
-                <div>
-                    u16HighBgLimit
-                    <SliderValueU16 value={this.props.value.u16HighBgLimit} onChange={u16HighBgLimit => this.send({u16HighBgLimit})} />
-                </div>
-                <div>
-                    u16LowRgLimit
-                    <SliderValueU16 value={this.props.value.u16LowRgLimit} onChange={u16LowRgLimit => this.send({u16LowRgLimit})} />
-                </div>
-                <div>
-                    u16LowBgLimit
-                    <SliderValueU16 value={this.props.value.u16LowBgLimit} onChange={u16LowBgLimit => this.send({u16LowBgLimit})} />
-                </div>
+                bEnable
+                <Checkbox checked={props.value.bEnable} onChange={e => send({bEnable: e.target.checked})} />
             </div>
-        );
-    }
+            <div>
+                enOpType
+                <OpTypeEditor value={props.value.enOpType} onChange={enOpType => send({enOpType})} />
+            </div>
+            <div>
+                u16HighRgLimit
+                <SliderValueU16 value={props.value.u16HighRgLimit} onChange={u16HighRgLimit => send({u16HighRgLimit})} />
+            </div>
+            <div>
+                u16HighBgLimit
+                <SliderValueU16 value={props.value.u16HighBgLimit} onChange={u16HighBgLimit => send({u16HighBgLimit})} />
+            </div>
+            <div>
+                u16LowRgLimit
+                <SliderValueU16 value={props.value.u16LowRgLimit} onChange={u16LowRgLimit => send({u16LowRgLimit})} />
+            </div>
+            <div>
+                u16LowBgLimit
+                <SliderValueU16 value={props.value.u16LowBgLimit} onChange={u16LowBgLimit => send({u16LowBgLimit})} />
+            </div>
+        </div>
+    )
 }

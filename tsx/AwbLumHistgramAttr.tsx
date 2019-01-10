@@ -17,36 +17,34 @@ export const AwbLumHistgramAttrDefault = () : IAwbLumHistgramAttr => ({
 })
 
 
-export interface IAwbLumHistgramAttrProps {
+interface IAwbLumHistgramAttrProps {
     value: IAwbLumHistgramAttr
     onChange(value: IAwbLumHistgramAttr): void
 }
-export class AwbLumHistgramAttr extends React.Component<IAwbLumHistgramAttrProps> {
-    send = (new_field) => {
-        let new_props = Object.assign(this.props.value, new_field)
-        this.props.onChange(new_props)
+export const AwbLumHistgramAttr: React.SFC<IAwbLumHistgramAttrProps> = (props) => {
+    const send = (new_field) => {
+        let value = Object.assign(props.value, new_field)
+        props.onChange(value)
     }
-    render() {
-        return (
+    return (
+        <div>
+            Defines the AWB attributes of the ISP.
             <div>
-                Defines the AWB attributes of the ISP.
-                <div>
-                    bEnable
-                    <Checkbox checked={this.props.value.bEnable} onChange={e => this.send({bEnable: e.target.checked})} />
-                </div>
-                <div>
-                    enOpType
-                    <OpTypeEditor value={this.props.value.enOpType} onChange={enOpType => this.send({enOpType})} />
-                </div>
-                <div>
-                    au8HistThresh
-                    <Graph unsigned pow={8} value={this.props.value.au8HistThresh} onChange={au8HistThresh => this.send({au8HistThresh})} />
-                </div>
-                <div>
-                    au16HistWt
-                    <Graph unsigned pow={16} value={this.props.value.au16HistWt} onChange={au16HistWt => this.send({au16HistWt})} />
-                </div>
+                bEnable
+                <Checkbox checked={props.value.bEnable} onChange={e => send({bEnable: e.target.checked})} />
             </div>
-        );
-    }
+            <div>
+                enOpType
+                <OpTypeEditor value={props.value.enOpType} onChange={enOpType => send({enOpType})} />
+            </div>
+            <div>
+                au8HistThresh
+                <Graph unsigned pow={8} value={props.value.au8HistThresh} onChange={au8HistThresh => send({au8HistThresh})} />
+            </div>
+            <div>
+                au16HistWt
+                <Graph unsigned pow={16} value={props.value.au16HistWt} onChange={au16HistWt => send({au16HistWt})} />
+            </div>
+        </div>
+    )
 }

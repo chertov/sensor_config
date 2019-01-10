@@ -23,39 +23,37 @@ export const AwbCbCrTrackAttrDefault = () : IAwbCbCrTrackAttr => {
     };
 }
 
-export interface IAwbCbCrTrackAttrProps {
+interface IAwbCbCrTrackAttrProps {
     value: IAwbCbCrTrackAttr
     onChange(value: IAwbCbCrTrackAttr): void
 }
-export class AwbCbCrTrackAttr extends React.Component<IAwbCbCrTrackAttrProps> {
-    send = (new_field) => {
-        let new_props = Object.assign(this.props.value, new_field)
-        this.props.onChange(new_props)
+export const AwbCbCrTrackAttr: React.SFC<IAwbCbCrTrackAttrProps> = (props) => {
+    const send = (new_field) => {
+        let value = Object.assign(props.value, new_field)
+        props.onChange(value)
     }
-    render() {
-        return (
+    return (
+        <div>
             <div>
-                <div>
-                    bEnable
-                    <Checkbox checked={this.props.value.bEnable} onChange={e => this.send({bEnable: e.target.checked})} />
-                </div>
-                <div>
-                    au16CrMax
-                    <Graph unsigned pow={16} value={this.props.value.au16CrMax} onChange={au16CrMax => this.send({au16CrMax})} />
-                </div>
-                <div>
-                    au16CrMin
-                    <Graph unsigned pow={16} value={this.props.value.au16CrMin} onChange={au16CrMin => this.send({au16CrMin})} />
-                </div>
-                <div>
-                    au16CbMax
-                    <Graph unsigned pow={16} value={this.props.value.au16CbMax} onChange={au16CbMax => this.send({au16CbMax})} />
-                </div>
-                <div>
-                    au16CbMin
-                    <Graph unsigned pow={16} value={this.props.value.au16CbMin} onChange={au16CbMin => this.send({au16CbMin})} />
-                </div>
+                bEnable
+                <Checkbox checked={props.value.bEnable} onChange={e => send({bEnable: e.target.checked})} />
             </div>
-        );
-    }
+            <div>
+                au16CrMax
+                <Graph unsigned pow={16} value={props.value.au16CrMax} onChange={au16CrMax => send({au16CrMax})} />
+            </div>
+            <div>
+                au16CrMin
+                <Graph unsigned pow={16} value={props.value.au16CrMin} onChange={au16CrMin => send({au16CrMin})} />
+            </div>
+            <div>
+                au16CbMax
+                <Graph unsigned pow={16} value={props.value.au16CbMax} onChange={au16CbMax => send({au16CbMax})} />
+            </div>
+            <div>
+                au16CbMin
+                <Graph unsigned pow={16} value={props.value.au16CbMin} onChange={au16CbMin => send({au16CbMin})} />
+            </div>
+        </div>
+    )
 }
