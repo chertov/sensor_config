@@ -3,7 +3,7 @@
         "alwaysStrict": true,
         "inlineSourceMap": true,
         "inlineSources": true,
-        "outDir": "./pub/js/",
+        "outDir": "./docs/js/",
         "target": "es5",
         "lib": ["es2017", "dom", "webworker"],
         "experimentalDecorators": true,

@@ -7,10 +7,15 @@
 
 !/tsx/**/*.tsx
 !/tsx/**/*.css
-!/pub/**/*.html
 !/package.json
 !/tsconfig.json
+!/server.js
 !/webpack.config.js
+
+!/docs/**/*.js
+!/docs/**/*.css
+!/docs/**/*.html
+
 
 !.gitignore
 !*/.gitignore

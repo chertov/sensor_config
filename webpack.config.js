@@ -11,7 +11,7 @@ const browser = {
     name: 'Browser',
     entry: './tsx/app.tsx',
     output: {
-        path: path.resolve(__dirname, './pub/js'),
+        path: path.resolve(__dirname, './docs/js'),
         filename: 'bundle.js'
     },
 
@@ -25,13 +25,13 @@ const browser = {
         alias: {
             joi: 'joi-browser'
         },
-        extensions: ['*', '.js', '.jsx', '.json', '.ts', '.tsx']
+        extensions: ['*', '.js', '.jsx', '.ts', '.tsx']
     },
     module: {
         rules: [
-            { test: /\.(ts|tsx)?$/, exclude: /node_modules/, include: [path.resolve(__dirname, 'jsx')], loader: 'ts-loader' },
-            { test: /\.(js|jsx)$/, exclude: /node_modules/, include: [path.resolve(__dirname, 'jsx')], loader: 'babel-loader' },
-            { test: /\.json$/, loader: 'json-loader' },
+            { test: /\.(ts|tsx)?$/, exclude: /node_modules/, include: [path.resolve(__dirname, 'tsx')], loader: 'ts-loader' },
+            { test: /\.(js|jsx)$/, exclude: /node_modules/, include: [path.resolve(__dirname, 'tsx')], loader: 'babel-loader' },
+            
             { test: /\.css$/,
                 loader: ExtractTextPlugin.extract({
                     fallback: 'style-loader',
