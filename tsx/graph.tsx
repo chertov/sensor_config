@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { Slider } from 'antd'
+import { Slider, InputNumber } from 'antd'
 import * as CSS from 'csstype'
 
 import { smin, smax, umax } from './slider'
@@ -22,8 +22,8 @@ export const Graph: React.SFC<IGraphProps> = (props) => {
     }
     const style: CSS.Properties = {
         float: 'left',
-        height: '200',
-        marginLeft: '50',
+        height: '250',
+        marginLeft: '10',
     };
     const {unsigned, pow, value} = props;
     const min = unsigned ? 0 : smin(pow);
@@ -34,11 +34,12 @@ export const Graph: React.SFC<IGraphProps> = (props) => {
         sliders.push(
             <div key={i} style={style}>
                 <Slider vertical min={min} max={max} value={value[i]} onChange={val => onChange(i, val)} />
+                {/* <InputNumber min={min} max={max} value={value[i]} onChange={val => onChange(i, val)} /> */}
             </div>
         )
     }
 
     return (
-        <div style={{height: '200'}}> {sliders} </div>
+        <div style={{height: '300'}}> {sliders} </div>
     )
 }
